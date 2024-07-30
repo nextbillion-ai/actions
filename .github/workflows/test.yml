@@ -19,7 +19,7 @@ jobs:
 
     - name: Extract Commit Info
       id: extract_commit_info
-      uses: nextbillion-ai/actions/git-envs@master
+      uses: nextbillion-ai/actions/git-envs@test-container
 
     - name: Use Extracted Info
       run: |
