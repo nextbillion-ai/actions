@@ -1,25 +1,16 @@
 name: 'git-envs'
 description: 'Extract CI_COMMIT_TAG, CI_COMMIT_AUTHOR, and CI_COMMIT_SHA'
 author: 'chang'
-inputs:
-  github_token:
-    description: 'GitHub token'
-    required: true
-outputs:
-  CI_COMMIT_TAG:
-    description: 'The commit tag'
-  CI_COMMIT_AUTHOR:
-    description: 'The commit author'
-  CI_COMMIT_SHA:
-    description: 'The commit SHA'
+# inputs:
+#   github_token:
+#     description: 'GitHub token'
+#     required: true
 runs:
   using: 'composite'
-  env:
-    WOCAO: whocares
-    GITHUB_PUSHER_NAME: ${{ github.event.pusher.name }}
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
     - name: Run script to extract commit info
       run: bash ./git-envs/run.sh
+      env:
+        WOCAO: whocares
+        GITHUB_PUSHER_NAME: ${{ github.event.pusher.name }}
       shell: bash
