@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    container:
+      image: ubuntu
 
     steps:
     - name: Checkout repository
@@ -20,8 +22,6 @@ jobs:
       uses: nextbillion-ai/actions/git-envs@master
 
     - name: Use Extracted Info
-      container:
-        image: ubuntu
       run: |
         echo -------envs----------
         echo "Commit SHA: $CI_COMMIT_SHA"
