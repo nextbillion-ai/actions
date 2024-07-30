@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+echo $WOCAO
 echo $GITHUB_PUSHER_NAME, $GITHUB_SHA, $GITHUB_REF
 
 echo "CI_COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
