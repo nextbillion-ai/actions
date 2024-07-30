@@ -1,0 +1,28 @@
+name: 'git-envs'
+description: 'Extract CI_COMMIT_TAG, CI_COMMIT_AUTHOR, and CI_COMMIT_SHA'
+author: 'chang'
+inputs:
+  github_token:
+    description: 'GitHub token'
+    required: true
+outputs:
+  CI_COMMIT_TAG:
+    description: 'The commit tag'
+  CI_COMMIT_AUTHOR:
+    description: 'The commit author'
+  CI_COMMIT_SHA:
+    description: 'The commit SHA'
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Run script to extract commit info
+      run: ./run.sh
+      shell: bash
+    - name: Set outputs
+      run: |
+        echo "::set-output name=CI_COMMIT_SHA::$(cat $GITHUB_ENV | grep CI_COMMIT_SHA | cut -d '=' -f 2)"
+        echo "::set-output name=CI_COMMIT_AUTHOR::$(cat $GITHUB_ENV | grep CI_COMMIT_AUTHOR | cut -d '=' -f 2)"
+        echo "::set-output name=CI_COMMIT_TAG::$(cat $GITHUB_ENV | grep CI_COMMIT_TAG | cut -d '=' -f 2)"
+      shell: bash
