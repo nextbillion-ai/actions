@@ -9,12 +9,7 @@ runs:
   using: 'composite'
   steps:
     - name: Run script to extract commit info
-      #run: bash ${{ github.action_path }}/scripts/run.sh
-      run: |
-        ls .
-        pwd
-        whoami
-        printenv
+      run: bash $GITHUB_ACTION_PATH/scripts/run.sh
       env:
         GITHUB_PUSHER_NAME: ${{ github.event.pusher.name }}
       shell: bash
