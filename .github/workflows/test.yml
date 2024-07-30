@@ -21,10 +21,6 @@ jobs:
 
     - name: Use Extracted Info
       run: |
-        echo -------outputs----------
-        echo "Commit SHA: ${{ steps.extract_commit_info.outputs.CI_COMMIT_SHA }}"
-        echo "Commit Author: ${{ steps.extract_commit_info.outputs.CI_COMMIT_AUTHOR }}"
-        echo "Commit Tag: ${{ steps.extract_commit_info.outputs.CI_COMMIT_TAG }}"
         echo -------envs----------
         echo "Commit SHA: $CI_COMMIT_SHA"
         echo "Commit Author: $CI_COMMIT_AUTHOR"

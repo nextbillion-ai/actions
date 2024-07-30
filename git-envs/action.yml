@@ -20,9 +20,3 @@ runs:
     - name: Run script to extract commit info
       run: bash ./git-envs/run.sh
       shell: bash
-    - name: Set outputs
-      run: |
-        echo "::set-output name=CI_COMMIT_SHA::$(cat $GITHUB_ENV | grep CI_COMMIT_SHA | cut -d '=' -f 2)"
-        echo "::set-output name=CI_COMMIT_AUTHOR::$(cat $GITHUB_ENV | grep CI_COMMIT_AUTHOR | cut -d '=' -f 2)"
-        echo "::set-output name=CI_COMMIT_TAG::$(cat $GITHUB_ENV | grep CI_COMMIT_TAG | cut -d '=' -f 2)"
-      shell: bash
