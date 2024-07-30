@@ -21,7 +21,7 @@ jobs:
 
     - name: Extract Commit Info
       id: extract_commit_info
-      uses: nextbillion-ai/actions/git-envs@test-container
+      uses: nextbillion-ai/actions/git-envs@master
 
     - name: Use Extracted Info
       run: |
@@ -40,7 +40,7 @@ jobs:
 
     - name: Extract Commit Info
       id: extract_commit_info
-      uses: nextbillion-ai/actions/git-envs@test-container
+      uses: nextbillion-ai/actions/git-envs@master
 
     - name: Use Extracted Info
       run: |
