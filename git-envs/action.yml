@@ -11,5 +11,5 @@ runs:
     - name: Run script to extract commit info
       run: bash $GITHUB_ACTION_PATH/scripts/run.sh
       env:
-        GITHUB_PUSHER_NAME: ${{ github.event.pusher.name }}
+        GITHUB_PUSHER_NAME: ${{ github.event.pusher.email }}
       shell: bash
