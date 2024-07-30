@@ -9,8 +9,7 @@ runs:
   using: 'composite'
   steps:
     - name: Run script to extract commit info
-      run: bash ./run.sh
+      run: bash ./scripts/run.sh
       env:
-        WOCAO: whocares
         GITHUB_PUSHER_NAME: ${{ github.event.pusher.name }}
       shell: bash
