@@ -8,8 +8,31 @@ on:
       - '*'  # Trigger the workflow on any tag push
 
 jobs:
-  build:
+  test:
     runs-on: self-hosted
+    steps:
+    - name: chown
+      run: |
+        #!/bin/bash
+        sudo chown -R $(whoami) .
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Extract Commit Info
+      id: extract_commit_info
+      uses: nextbillion-ai/actions/git-envs@test-container
+
+    - name: Use Extracted Info
+      run: |
+        echo -------direct----------
+        echo "Commit SHA: $CI_COMMIT_SHA"
+        echo "Commit Author: $CI_COMMIT_AUTHOR"
+        echo "Commit Tag: $CI_COMMIT_TAG"
+  container-test:
+    runs-on: self-hosted
+    container:
+      image: ubuntu
 
     steps:
     - name: Checkout repository
@@ -17,11 +40,11 @@ jobs:
 
     - name: Extract Commit Info
       id: extract_commit_info
-      uses: nextbillion-ai/actions/git-envs@master
+      uses: nextbillion-ai/actions/git-envs@test-container
 
     - name: Use Extracted Info
       run: |
-        echo -------envs----------
+        echo -------container----------
         echo "Commit SHA: $CI_COMMIT_SHA"
         echo "Commit Author: $CI_COMMIT_AUTHOR"
         echo "Commit Tag: $CI_COMMIT_TAG"

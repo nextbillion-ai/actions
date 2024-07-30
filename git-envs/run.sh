@@ -1,18 +1,11 @@
 #!/bin/bash
+set -e
 
-# Fetch all tags and commits
-git fetch --tags
+echo $WOCAO
+echo $GITHUB_PUSHER_NAME, $GITHUB_SHA, $GITHUB_REF
 
-# Extract the commit SHA
-CI_COMMIT_SHA=$(git rev-parse HEAD)
-
-# Extract the commit author
-CI_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
-
-# Extract the commit tag, if any
-CI_COMMIT_TAG=$(git describe --tags --exact-match 2>/dev/null || echo "")
-
-# Write outputs to the GitHub environment file
-echo "CI_COMMIT_SHA=$CI_COMMIT_SHA" >> $GITHUB_ENV
-echo "CI_COMMIT_AUTHOR=$CI_COMMIT_AUTHOR" >> $GITHUB_ENV
-echo "CI_COMMIT_TAG=$CI_COMMIT_TAG" >> $GITHUB_ENV
+echo "CI_COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+echo "CI_COMMIT_AUTHOR=$GITHUB_PUSHER_NAME" >> $GITHUB_ENV
+if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+    echo "CI_COMMIT_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+fi
