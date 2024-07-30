@@ -12,6 +12,9 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
     - name: Extract Commit Info
       id: extract_commit_info
       uses: nextbillion-ai/actions/git-envs@master
