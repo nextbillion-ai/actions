@@ -32,9 +32,13 @@ jobs:
   container-test:
     runs-on: self-hosted
     container:
-      image: stedolan/jq
+      image: ubuntu
 
     steps:
+    - name: install jq
+      run: |
+        apt-get update; apt-get install -y jq
+
     - name: Checkout repository
       uses: actions/checkout@v4
 
