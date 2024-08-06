@@ -26,9 +26,11 @@ jobs:
 
     - name: echo
       run: |
+        #!/bin/bash
+        set -e
         echo -------direct----------
         echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
-        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md
+        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md 1>/dev/null
   container-test:
     runs-on: self-hosted
     container:
@@ -37,7 +39,7 @@ jobs:
     steps:
     - name: install dependencies
       run: |
-        apt-get update; apt-get install -y jq openssl curl
+        apt-get update; apt-get install -y jq openssl curl 1>/dev/null
 
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -50,6 +52,8 @@ jobs:
 
     - name: echo
       run: |
+        #!/bin/bash
+        set -e
         echo -------container----------
         echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
-        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md
+        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md 1>/dev/null
