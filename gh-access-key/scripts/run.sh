@@ -50,6 +50,8 @@ getToken(){
         https://api.github.com/app/installations/$INSTALLATION_ID/access_tokens 2>/dev/null | grep '"token":' | awk -F'"' '{print $4}')
     #echo botTokenResponse: $botTokenResponse
     echo "GH_ACCESS_KEY=$botToken" >> $GITHUB_ENV
+    rm .gitconfig || true
+    git config url."https://x-access-token:${GH_ACCESS_KEY}@github.com/".insteadOf "https://github.com/"
 }
 
 ensure_dependencies

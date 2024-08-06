@@ -30,7 +30,12 @@ jobs:
         set -e
         echo -------direct----------
         echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
-        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md 1>/dev/null
+        if curl -H "Authorization: Bearer ${GH_ACCESS_KEY}" -H "Accept: application/vnd.github.v3+json"  https://api.github.com/repos/nextbillion-ai/tokamak | grep "Bad credentials" ; then
+          echo "invalid access token"
+          exit 1
+        else
+          echo "access token is working"
+        fi
   container-test:
     runs-on: self-hosted
     container:
@@ -52,4 +57,9 @@ jobs:
         set -e
         echo -------container----------
         echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
-        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md 1>/dev/null
+        if curl -H "Authorization: Bearer ${GH_ACCESS_KEY}" -H "Accept: application/vnd.github.v3+json"  https://api.github.com/repos/nextbillion-ai/tokamak | grep "Bad credentials" ; then
+          echo "invalid access token"
+          exit 1
+        else
+          echo "access token is working"
+        fi
