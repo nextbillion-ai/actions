@@ -1,6 +1,6 @@
 name: git-envs-test
 on:
-  pull_request:
+  push:
     branches: ["master"]
     paths:
       - 'git-envs/**'
@@ -19,7 +19,7 @@ jobs:
 
     - name: Extract Commit Info
       id: extract_commit_info
-      uses: nextbillion-ai/actions/git-envs@${{ github.sha }}
+      uses: nextbillion-ai/actions/git-envs@master
 
     - name: Use Extracted Info
       run: |
@@ -38,7 +38,7 @@ jobs:
 
     - name: Extract Commit Info
       id: extract_commit_info
-      uses: nextbillion-ai/actions/git-envs@${{ github.sha }}
+      uses: nextbillion-ai/actions/git-envs@master
 
     - name: Use Extracted Info
       run: |
