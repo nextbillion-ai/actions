@@ -1,8 +1,8 @@
 #!/bin/bash
-set -e
+set -ex
 
 getToken(){
-    set -e
+    set -ex
     APP_ID='946286'
     INSTALLATION_ID='52855754'
     PRIVATE_KEY_PATH="nb-cicd-bot-pk.pem"
