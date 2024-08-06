@@ -1,9 +1,7 @@
 #!/bin/bash
 set -e
 
-echo INPUT_NB_CICD_BOT_PK: $INPUT_NB_CICD_BOT_PK
-getToken
-echo getToken finshed ok.
+
 
 getToken(){
     APP_ID='946286'
@@ -36,3 +34,7 @@ getToken(){
     botToken=$(echo $botTokenResponse| jq -r .token)
     echo "GH_ACCESS_KEY=$botToken" >> $GITHUB_ENV
 }
+
+echo INPUT_NB_CICD_BOT_PK: $INPUT_NB_CICD_BOT_PK
+getToken
+echo getToken finshed ok.
