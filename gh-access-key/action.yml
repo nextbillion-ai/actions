@@ -9,7 +9,7 @@ runs:
   using: 'composite'
   steps:
     - name: write pk.pem to disk
-      run: echo "${{ inputs.nb-cicd-bot-pk }}" > $GITHUB_ACTION_PATH/scripts/nb-cicd-bot-pk.pem
+      run: echo "${{ inputs.nb-cicd-bot-pk }}" > nb-cicd-bot-pk.pem
       shell: bash
     - name: Run script to request github access key
       run: bash $GITHUB_ACTION_PATH/scripts/run.sh
