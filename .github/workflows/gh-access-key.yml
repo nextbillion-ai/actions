@@ -35,9 +35,9 @@ jobs:
       image: ubuntu
 
     steps:
-    - name: install jq
+    - name: install dependencies
       run: |
-        apt-get update; apt-get install -y jq
+        apt-get update; apt-get install -y jq openssl 
 
     - name: Checkout repository
       uses: actions/checkout@v4
