@@ -2,12 +2,12 @@ name: 'gh-access-key'
 description: 'use nb-cicd-bot-pk to request for temp github access key'
 author: 'chang'
 inputs:
-  NB_CICD_BOT_PK:
+  nb-cicd-bot-pk:
     description: "pk for nb cicd bot app"
     required: true
 runs:
   using: 'composite'
   steps:
     - name: Run script to request github access key
-      run: bash $GITHUB_ACTION_PATH/scripts/run.sh
+      run: bash $GITHUB_ACTION_PATH/scripts/run.sh ${{ inputs.nb-cicd-bot-pk }} 
       shell: bash
