@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-echo $INPUT_NB_CICD_BOT_PK
+echo INPUT_NB_CICD_BOT_PK: $INPUT_NB_CICD_BOT_PK
+getToken
+echo getToken finshed ok.
 
 getToken(){
     APP_ID='946286'
