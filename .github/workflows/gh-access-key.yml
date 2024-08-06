@@ -1,0 +1,44 @@
+name: gh-access-key-test
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - 'gh-access-key/**'
+
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+    - name: chown
+      run: |
+        #!/bin/bash
+        sudo chown -R $(whoami) .
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: get access key
+      id: get_access_key
+      uses: nextbillion-ai/actions/gh-access-key@master
+
+    - name: echo
+      run: |
+        echo -------direct----------
+        echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
+  container-test:
+    runs-on: self-hosted
+    container:
+      image: mwendler/jq
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: get access key
+      id: get_access_key
+      uses: nextbillion-ai/actions/gh-access-key@master
+
+    - name: echo
+      run: |
+        echo -------container----------
+        echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"

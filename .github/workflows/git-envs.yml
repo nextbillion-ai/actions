@@ -1,11 +1,9 @@
-name: CI Workflow
-
+name: git-envs-test
 on:
   push:
-    branches:
-      - '*'  # Trigger the workflow on any branch push
-    tags:
-      - '*'  # Trigger the workflow on any tag push
+    branches: ["master"]
+    paths:
+      - 'git-envs/**'
 
 jobs:
   test:
