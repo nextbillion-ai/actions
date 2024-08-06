@@ -19,7 +19,7 @@ jobs:
 
     - name: get access key
       id: get_access_key
-      uses: nextbillion-ai/actions/gh-access-key@${GITHUB_SHA}
+      uses: nextbillion-ai/actions/gh-access-key@${{ github.sha }}
 
     - name: echo
       run: |
@@ -36,7 +36,7 @@ jobs:
 
     - name: get access key
       id: get_access_key
-      uses: nextbillion-ai/actions/gh-access-key@${GITHUB_SHA}
+      uses: nextbillion-ai/actions/gh-access-key@${{ github.sha }}
 
     - name: echo
       run: |
