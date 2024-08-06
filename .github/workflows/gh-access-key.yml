@@ -32,7 +32,7 @@ jobs:
   container-test:
     runs-on: self-hosted
     container:
-      image: mwendler/jq
+      image: stedolan/jq
 
     steps:
     - name: Checkout repository
