@@ -20,6 +20,8 @@ jobs:
     - name: get access key
       id: get_access_key
       uses: nextbillion-ai/actions/gh-access-key@master
+      with:
+        NB_CICD_BOT_PK: ${{ secrets.NB_CICD_BOT_PK }}
 
     - name: echo
       run: |
@@ -37,6 +39,8 @@ jobs:
     - name: get access key
       id: get_access_key
       uses: nextbillion-ai/actions/gh-access-key@master
+      with:
+        NB_CICD_BOT_PK: ${{ secrets.NB_CICD_BOT_PK }}
 
     - name: echo
       run: |
