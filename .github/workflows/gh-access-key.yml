@@ -27,6 +27,7 @@ jobs:
       run: |
         echo -------direct----------
         echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
+        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md
   container-test:
     runs-on: self-hosted
     container:
@@ -46,3 +47,4 @@ jobs:
       run: |
         echo -------container----------
         echo "GH_ACCESS_KEY: $GH_ACCESS_KEY"
+        curl https://${GH_ACCESS_KEY}:x-oauth-basic@github.com/nextbillion-ai/tokamak/blob/main/README.md
