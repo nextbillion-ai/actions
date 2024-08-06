@@ -37,7 +37,7 @@ jobs:
     steps:
     - name: install dependencies
       run: |
-        apt-get update; apt-get install -y jq openssl 
+        apt-get update; apt-get install -y jq openssl curl
 
     - name: Checkout repository
       uses: actions/checkout@v4
