@@ -1,6 +1,26 @@
 #!/bin/bash
 set -e
 
+ensure_dependencies(){
+    if command -v curl >/dev/null 2>&1; then
+        echo curl is installed
+        return 0
+    fi
+    if command -v apk >/dev/null 2>&1; then
+        if [[ "$(whoami)" == "root" ]]; then
+            apk update && apk add curl
+        else
+            sudo apk update && sudo apk add curl
+        fi
+    elif command -v apt-get >/dev/null 2>&1; then
+        if [[ "$(whoami)" == "root" ]]; then
+            apt-get update && apt-get install -y curl
+        else
+            sudo apt-get update && sudo apt-get install -y curl
+        fi
+    fi
+}
+
 getToken(){
     set -e
     APP_ID='946286'
@@ -32,5 +52,6 @@ getToken(){
     echo "GH_ACCESS_KEY=$botToken" >> $GITHUB_ENV
 }
 
+ensure_dependencies
 getToken
 echo getToken finshed ok.

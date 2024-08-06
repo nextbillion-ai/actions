@@ -37,10 +37,6 @@ jobs:
       image: ubuntu
 
     steps:
-    - name: install dependencies
-      run: |
-        apt-get update; apt-get install -y jq openssl curl 1>/dev/null
-
     - name: Checkout repository
       uses: actions/checkout@v4
 
