@@ -24,12 +24,11 @@ getToken(){
     JWT="$HEADER.$PAYLOAD.$SIGNATURE"
 
     # Request the installation access token
-    botTokenResponse=$(curl -X POST \
+    botToken=$(curl -X POST \
         -H "Authorization: Bearer $JWT" \
         -H "Accept: application/vnd.github+json" \
-        https://api.github.com/app/installations/$INSTALLATION_ID/access_tokens 2>/dev/null)
+        https://api.github.com/app/installations/$INSTALLATION_ID/access_tokens 2>/dev/null | grep '"token":' | awk -F'"' '{print $4}')
     #echo botTokenResponse: $botTokenResponse
-    botToken=$(echo $botTokenResponse| jq -r .token)
     echo "GH_ACCESS_KEY=$botToken" >> $GITHUB_ENV
 }
 
