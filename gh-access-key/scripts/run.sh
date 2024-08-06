@@ -1,14 +1,11 @@
 #!/bin/bash
 set -e
-NB_CICD_BOT_PK=$1
-echo NB_CICD_BOT_PK: $NB_CICD_BOT_PK
 
 getToken(){
     set -e
     APP_ID='946286'
     INSTALLATION_ID='52855754'
-    PRIVATE_KEY_PATH="cicd-bot-pk.pem"
-    echo $NB_CICD_BOT_PK>$PRIVATE_KEY_PATH
+    PRIVATE_KEY_PATH="nb-cicd-bot-pk.pem"
     # Get the current time and the expiration time (10 minutes from now)
     NOW=$(date +%s)
     EXPIRATION=$(($NOW + 600))
