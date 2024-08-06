@@ -52,13 +52,12 @@ getToken(){
     echo "GH_ACCESS_KEY=$botToken" >> $GITHUB_ENV
     if ls ./.git &>/dev/null;then
         if command -v git >/dev/null 2>&1; then
-        do
             for entry in $(git config --local --get-regexp '^url\..*github\.com' | awk '{print $1}'); do
                 echo "Removing configuration: $entry"
                 git config --local --unset-all "$entry" || true
             done
             git config --local url."https://x-access-token:${GH_ACCESS_KEY}@github.com/".insteadOf "https://github.com/"
-        done
+        fi 
     fi
 }
 
