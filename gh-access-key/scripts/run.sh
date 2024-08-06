@@ -8,15 +8,15 @@ ensure_dependencies(){
     fi
     if command -v apk >/dev/null 2>&1; then
         if [[ "$(whoami)" == "root" ]]; then
-            apk update && apk add curl
+            apk update 1>/dev/null && apk add curl 1>/dev/null
         else
-            sudo apk update && sudo apk add curl
+            sudo apk update 1>/dev/null && sudo apk add curl 1>/dev/null
         fi
     elif command -v apt-get >/dev/null 2>&1; then
         if [[ "$(whoami)" == "root" ]]; then
-            apt-get update && apt-get install -y curl
+            apt-get update 1>/dev/null && apt-get install -y curl 1>/dev/null
         else
-            sudo apt-get update && sudo apt-get install -y curl
+            sudo apt-get update 1>/dev/null && sudo apt-get install -y curl 1>/dev/null
         fi
     fi
 }
