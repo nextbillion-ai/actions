@@ -56,7 +56,7 @@ getToken(){
                 echo "Removing configuration: $entry"
                 git config --local --unset-all "$entry" || true
             done
-            git config --local url."https://x-access-token:${GH_ACCESS_KEY}@github.com/".insteadOf "https://github.com/"
+            git config --local url."https://x-access-token:${botToken}@github.com/".insteadOf "https://github.com/"
         fi 
     fi
 }
